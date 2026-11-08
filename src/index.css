@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-lona-500: #2a8a55;
+  --color-lona-600: #1f6f43;
+  --color-lona-700: #185735;
+  --color-arcilla-500: #c4552d;
+
+  --animate-entrada: entrada 180ms ease-out;
+  @keyframes entrada {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* Respeta "Reducir movimiento" de iOS */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/*
+ * Colores de gráficos. Cada modo tiene sus propios valores, validados contra
+ * su superficie (bg-white / stone-900) para contraste y daltonismo.
+ * Ganado/perdido es verde/naranja y no verde/rojo: verde y rojo se confunden con daltonismo.
+ */
+:root {
+  --viz-superficie: #ffffff;
+  --viz-ganado: #1f6f43;
+  --viz-perdido: #eb6834;
+  --viz-serie-1: #2a78d6;
+  --viz-serie-2: #eb6834;
+  --viz-grilla: #e7e5e4;
+  --viz-eje: #78716c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --viz-superficie: #1c1917;
+    --viz-ganado: #207548;
+    --viz-perdido: #e0703f;
+    --viz-serie-1: #3987e5;
+    --viz-serie-2: #d95926;
+    --viz-grilla: #292524;
+    --viz-eje: #a8a29e;
+  }
+}
+
+:root {
+  color-scheme: light dark;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-stone-50 text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-100;
+  overscroll-behavior-y: none;
+}
